@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import { GET_HEADER } from '../graphql/getHeader.operation';
-import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';  // Importa CommonModule
 
 
@@ -15,7 +14,6 @@ import { CommonModule } from '@angular/common';  // Importa CommonModule
 export class HeaderComponent implements OnInit {
   data: any[] = [];
   error: any;
-  blogPosts$: Observable<any> | undefined
 
   constructor(private apollo: Apollo){};
 
@@ -30,7 +28,6 @@ export class HeaderComponent implements OnInit {
     }).valueChanges.subscribe(({data, error}: any)=> {
       this.data = data.headerCollection.items[0]
       this.error = error;
-      // this.blogPosts$ = data;
       console.log(this.data);
     })
   }
